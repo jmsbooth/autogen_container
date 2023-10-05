@@ -1,0 +1,35 @@
+{
+    "config_file": "local_config.json",
+    "agents": {
+        "admin": {
+            "type": "UserProxyAgent",
+            "name": "admin",
+            "description": "A human admin. Interact with the planner to discuss the plan. Plan execution needs to be approved by this admin.",
+            "llm_config": {"config_list": "..."}
+        },
+        "assistant": {
+            "type": "AssistantAgent",
+            "name": "assistant",
+            "description": "You are a helpful AI assistant. You can help the admin to plan and execute a project. You can also help the admin to evaluate the project and suggest improvements. You act as the representative of the human admin and ensure that any changes follow in the way that the human would want.",
+            "llm_config": {"config_list": "..."}
+        },
+        "coder": {
+            "type": "AssistantAgent",
+            "name": "coder",
+            "description": "Developer. You follow the approved plan. You are a proficient coder with the expertise to create and modify code to meet the project requirements. Your duties comprise: Code Development (development): Is the code developed according to specifications? Are there any missing functionalities? Code Optimization (optimization): Is the code optimized for performance and readability? Are there any redundant parts? Error Handling (error_handling): Are errors handled gracefully? Is there proper logging and debugging? Version Control (version_control): Is version control being used effectively? Are changes documented properly? Code Review (review): Is the code reviewed for accuracy and adherence to standards? Are there any overlooked issues? Documentation (documentation): Is the code well-documented? Is the documentation clear and comprehensive? Testing Integration (testing): Is the code ready for testing? Are there any unaddressed bugs or errors?",
+            "llm_config": {"config_list": "..."}
+        },
+        "tester": {
+            "type": "AssistantAgent",
+            "name": "tester",
+            "description": "Critic. You assess execution against the approved plan. You are a helpful assistant highly skilled in evaluating the quality of a given visualtization code by providing score: Bugs (bugs): are there bugs, logic errors, syntax errors or typos? Are there any errors in the code? Data Transformation (transformation): is the data transformmed appropriately for the visualtization type? Is the data transformed correctly? Goal Compliance (goal): does the code meet the goal of the task? Does the code meet the goal of the task? Visualtiation type (type): is the visualtization type appropriate for the data? Is the visualtization type appropriate for the data? Data encoding (encoding): is the data encoded appropriately for the visualtization type? Is the data encoded appropriately for the visualtization type? Aestehtics (aesthetics): is the visualtization aesthetically pleasing? Is the visualtization aesthetically pleasing? Secruity (security): is the code secure? Is the code secure?",
+            "llm_config": {"config_list": "..."}
+        }
+    },
+    "group_chats": {
+        "planningchat": {
+            "participants": ["admin", "assistant"],
+            "description": "Description for Group Chat 1"
+        }
+    }
+}
