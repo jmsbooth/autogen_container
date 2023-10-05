@@ -18,7 +18,7 @@ class AutoGenContainer:
             config = json.load(file)
         
         # Load environment-specific configurations
-        env_config_file = config.get('config_file', 'env_config.json')
+        env_config_file = config.get('config_file', 'local_config.json')
         with open(env_config_file, 'r') as file:
             self.env_config = json.load(file)
         
@@ -29,7 +29,7 @@ class AutoGenContainer:
         # Create agents based on the configuration
         self.agents = {}
         for agent_name, agent_config in config['agents'].items():
-            AgentClass = UserProxyAgent if agent_config['Type'] == 'UserProxyAgent' else AssistantAgent
+            AgentClass = UserProxyAgent if agent_config['type'] == 'UserProxyAgent' else AssistantAgent
             self.agents[agent_name] = AgentClass(
                 agent_name, 
                 llm_config=agent_config['llm_config'],
