@@ -1,0 +1,45 @@
+AutoGen Container Project
+This project encapsulates Microsoft's AutoGen project within a Docker container, allowing for a more portable and scalable deployment. The container is designed to receive configuration and input data, process it using the AutoGen capabilities, and return the outputs.
+
+Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+Prerequisites
+Docker installed on your machine. Download Docker
+Building the Container
+Clone this repository to your local machine.
+Navigate to the project directory in your terminal.
+Run the following command to build the Docker container:
+bash
+Copy code
+docker build -t autogen-container .
+Running the Container
+Once the container is built, you can run it with the following command:
+
+bash
+Copy code
+docker run -p 5000:5000 autogen-container
+The container will start, and the AutoGen service will be available at http://localhost:5000.
+
+Usage
+Configuring Agents
+Create a config.json file to specify the agents and group chats based on your requirements. A sample config.json file is provided in the repository.
+In the config.json file, you can specify the agents and their types, names, descriptions, and other configurations under the "agents" key.
+You can also specify group chats under the "group_chats" key.
+Inputting Data
+To initiate a chat with an agent, send a POST request to http://localhost:5000/input_chat with a JSON payload containing the agent_name and message.
+Example:
+
+bash
+Copy code
+curl -X POST -H "Content-Type: application/json" -d '{"agent_name": "admin", "message": "Hello, Admin!"}' http://localhost:5000/input_chat
+Retrieving Outputs
+The output from the chat will be returned in the response body of the POST request.
+You can also export the chat log by sending a GET request to http://localhost:5000/export_chat_log.
+Example:
+
+bash
+Copy code
+curl http://localhost:5000/export_chat_log
+Contributing
+If you have suggestions for how AutoGen Container could be improved, or want to report a bug, open an issue! Contributions are welcomed!
