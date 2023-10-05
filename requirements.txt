@@ -1,4 +1,4 @@
-flask==2.0.1
+flask==2.2.5
 werkzeug==2.0.1
 autogen  # Omitting the version number to always use the latest version
 pyautogen
