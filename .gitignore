@@ -167,3 +167,4 @@ key_aoai.txt
 base_aoai.txt
 wolfram.txt
 local_config.json
+env_config.json
