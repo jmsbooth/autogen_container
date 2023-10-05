@@ -1,71 +1,70 @@
-AutoGen Container Project
+# AutoGen Container Project
+
 This project encapsulates Microsoft's AutoGen project within a Docker container, allowing for a more portable and scalable deployment. The container is designed to receive configuration and input data, process it using the AutoGen capabilities, and return the outputs.
 
-Getting Started
+## Getting Started
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Prerequisites
-Docker installed on your machine. Download Docker
-Building the Container
-Clone this repository to your local machine.
-Navigate to the project directory in your terminal.
-Run the following command to build the Docker container:
-bash
-Copy code
-docker build -t autogen-container .
-Running the Container
+### Prerequisites
+
+- Docker installed on your machine. [Download Docker](https://www.docker.com/get-started)
+
+### Building the Container
+
+1. Clone this repository to your local machine.
+2. Navigate to the project directory in your terminal.
+3. Run the following command to build the Docker container:
+
+```docker build -t autogen-container .```
+
+
+### Running the Container
 Once the container is built, you can run it with the following command:
 
-bash
-Copy code
-docker run -p 5000:5000 autogen-container
+```docker run -p 5000:5000 autogen-container```
+
 The container will start, and the AutoGen service will be available at http://localhost:5000.
 
-Usage
-Configuring Agents
+##Usage
+###Configuring Agents
 Create a config.json file to specify the agents and group chats based on your requirements. A sample config.json file is provided in the repository.
 In the config.json file, you can specify the agents and their types, names, descriptions, and other configurations under the "agents" key.
 You can also specify group chats under the "group_chats" key.
-Inputting Data
+###Inputting Data
 To initiate a chat with an agent, send a POST request to http://localhost:5000/input_chat with a JSON payload containing the agent_name and message.
+
 Example:
 
-bash
-Copy code
-curl -X POST -H "Content-Type: application/json" -d '{"agent_name": "admin", "message": "Hello, Admin!"}' http://localhost:5000/input_chat
-Retrieving Outputs
+```curl -X POST -H "Content-Type: application/json" -d '{"agent_name": "admin", "message": "Hello, Admin!"}' http://localhost:5000/input_chat```
+###Retrieving Outputs
 The output from the chat will be returned in the response body of the POST request.
 You can also export the chat log by sending a GET request to http://localhost:5000/export_chat_log.
 Example:
 
-bash
-Copy code
-curl http://localhost:5000/export_chat_log
-Contributing
+```curl http://localhost:5000/export_chat_log```
+##Contributing
 If you have suggestions for how AutoGen Container could be improved, or want to report a bug, open an issue! Contributions are welcomed!
 
-TO-DO List
-This section lists potential improvements and features that could enhance the functionality and usability of the AutoGen Container Project:
-
-Error Handling and Logging:
-Implement comprehensive error handling to manage and report issues that may arise during the operation of the container and 
-AutoGen agents.
+#TO-DO List
+##Error Handling and Logging:
+Implement comprehensive error handling to manage and report issues that may arise during the operation of the container and AutoGen agents.
 Improve logging to provide detailed information for debugging and monitoring the system's performance.
 
-API Documentation:
+##API Documentation:
 Create a comprehensive API documentation to explain the available endpoints, request/response formats, and provide examples for users.
 
-Testing Framework:
+##Testing Framework:
 Develop a testing framework to validate the functionality of the AutoGen agents and the container setup, ensuring that everything works as expected before deployment.
 
-Performance Optimization:
+##Performance Optimization:
 Optimize the performance of the container and AutoGen agents to handle a higher volume of requests efficiently.
 
-User Interface:
+##User Interface:
 Create a user-friendly interface for interacting with the AutoGen agents and managing the container, improving the user experience.
 
-External Integrations:
+##External Integrations:
 Explore and implement integrations with other tools and platforms to extend the capabilities of the AutoGen container.
 
-Community Engagement:
+##Community Engagement:
 Encourage community contributions by creating a contributing guide, code of conduct, and other community-focused documentation.
